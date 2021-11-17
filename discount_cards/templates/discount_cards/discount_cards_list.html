@@ -1,0 +1,55 @@
+{% extends "discount_cards/base.html" %}
+{% spaceless %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+{% load cache %}
+
+{% block title %}{% trans "discount_card_list" %}{% endblock title %}
+
+{% block content %}
+<main>
+  <div class="container">
+    <div class="row pt-3 pb-3">
+      <div class="col-md-12 d-sm-flex text-center justify-content-center">
+        <h1 class="h2">{% trans "discount_card_list" %}</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md"></div>
+      <div class="col-md">
+        <table class="table">
+          <tr>
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">{% trans "discount_card.seria" %}</th>
+                <th scope="col">{% trans "discount_card.number" %}</th>
+                <th scope="col">{% trans "discount_card.end_date" %}</th>
+                <th scope="col">{% trans "discount_card.status" %}</th>
+                <th scope="col">{% trans "discount_card.button_details" %}</th>
+                <th scope="col">{% trans "discount_card.button_edit" %}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for card in cards %}
+              <tr>
+                <td>{{ card.seria }}</td>
+                <td>{{ card.number }}</td>
+                <td>{{ card.end_date }}</td>
+                <td>{{ card.status }}</td>
+                <td><a class="btn btn-dark text-white" href="{% url 'discount_cards:card_detail' card.id %}">{% trans "discount_cards.card_detail" %}</a></td>
+                <td><a class="btn btn-dark text-white" href="{% url 'discount_cards:edit_card' card.id %}">{% trans "discount_cards.edit_card" %}</a></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+        </table>
+        {% if is_paginated %}
+          {% include "_pagination.html" %}
+        {% endif %}
+      </div>
+      <div class="col-md"></div>
+    </div>
+  </div>
+</main>
+{% endblock %}
+{% endspaceless %}

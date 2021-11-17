@@ -1,0 +1,33 @@
+{% extends "discount_cards/base.html" %}
+{% spaceless %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+{% load cache %}
+{% load crispy_forms_tags %}
+
+{% block title %}{% trans "change_status" %}{% endblock title %}
+
+{% block content %}
+<main>
+  <div class="container">
+    <div class="row pt-3 pb-3">
+      <div class="col-md-12 d-sm-flex text-center justify-content-center">
+        <h1 class="h2">{% trans "change_status" %}</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md"></div>
+      <div class="col-md">
+        <form class="" method="post">
+          {% csrf_token %}
+          {{ form|crispy }}
+          <button type="submit" class="btn btn-dark text-white">{% trans "submit" %}</button>
+        </form>
+      </div>
+      <div class="col-md"></div>
+    </div>
+  </div>
+</main>
+{% endblock %}
+{% endspaceless %}

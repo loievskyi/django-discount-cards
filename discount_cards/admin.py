@@ -1,3 +1,7 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import DiscountCard, Purchase
+
+
+admin.site.register(DiscountCard)
+admin.site.register(Purchase)
