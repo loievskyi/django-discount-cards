@@ -32,7 +32,7 @@
             </thead>
             <tbody>
               {% for card in cards %}
-              <tr>
+              <tr data-row="">
                 <td>{{ card.seria }}</td>
                 <td>{{ card.number }}</td>
                 <td>{{ card.end_date }}</td>
@@ -45,7 +45,7 @@
                 </td>
                 <td><a class="btn btn-dark text-white" href="{% url 'discount_cards:card_detail' card.id %}">{% trans "discount_cards.card_detail" %}</a></td>
                 <td><a class="btn btn-dark text-white" href="{% url 'discount_cards:edit_card' card.id %}">{% trans "discount_cards.edit_card" %}</a></td>
-                <td><button class="btn btn-danger text-white" data-id="{{ card.id }}">{% trans 'discount_cards.delete_card' %}</button></td>
+                <td><button class="btn btn-danger text-white delete-btn" data-id="{{ card.id }}" data-name="Серия {{ card.seria }}, Номер {{ card.number }}" data-delete-url="{% url 'core:discount-card-detail' card.id %}">{% trans 'discount_cards.delete_card' %}</button></td>
               </tr>
               {% endfor %}
             </tbody>
