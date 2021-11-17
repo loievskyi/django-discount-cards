@@ -1,4 +1,5 @@
 from django.urls import path
+from django.views.generic.base import RedirectView
 
 from .views import DiscountCardListView, DiscountCardView, DiscountCardUpdateStatusView
 
@@ -14,4 +15,5 @@ urlpatterns = [
          name="edit_card"),
     # path("delete/<int:pk>/", DiscountCardDeleteView.as_view(),
     #      name="delete_card"),
+    path("", RedirectView.as_view(url="list/")),
 ]

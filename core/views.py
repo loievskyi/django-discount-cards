@@ -12,7 +12,7 @@ from .serializers import DiscountCardSerializer, DiscountCardRetrieveSerializer
 class DiscountCardViewSet(ModelViewSet):
     filter_backends = (filters.SearchFilter, filters.OrderingFilter,
                        DjangoFilterBackend)
-    search_fields = ("seria", "number",)
+    search_fields = ("seria", "number", "status", "end_date")
     ordering_fields = ("-release_date",)
     filterset_fields = "__all__"
     serializer_class = DiscountCardSerializer

@@ -17,17 +17,14 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md"></div>
       <div class="col-md">
         <form class="" action="index.html" method="post">
           {% csrf_token %}
           {{ card_form|crispy }}
         </form>
       </div>
-      <div class="col-md"></div>
     </div>
     <div class="row">
-      <div class="col-md"></div>
       <div class="col-md">
         <table class="table">
           <tr>
@@ -50,7 +47,6 @@
           {% include "_pagination.html" %}
         {% endif %}
       </div>
-      <div class="col-md"></div>
     </div>
   </div>
 </main>

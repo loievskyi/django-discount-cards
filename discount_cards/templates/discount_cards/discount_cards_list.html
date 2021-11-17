@@ -16,7 +16,6 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md"></div>
       <div class="col-md">
         <table class="table">
           <tr>
@@ -28,6 +27,7 @@
                 <th scope="col">{% trans "discount_card.status" %}</th>
                 <th scope="col">{% trans "discount_card.button_details" %}</th>
                 <th scope="col">{% trans "discount_card.button_edit" %}</th>
+                <th scope="col">{% trans "discount_card.button_delete" %}</th>
               </tr>
             </thead>
             <tbody>
@@ -36,9 +36,16 @@
                 <td>{{ card.seria }}</td>
                 <td>{{ card.number }}</td>
                 <td>{{ card.end_date }}</td>
-                <td>{{ card.status }}</td>
+                <td>
+                {% if card.status %}
+                  {% trans "discount_card.active" %}
+                {% else %}
+                  {% trans "discount_card.not_active" %}
+                {% endif %}
+                </td>
                 <td><a class="btn btn-dark text-white" href="{% url 'discount_cards:card_detail' card.id %}">{% trans "discount_cards.card_detail" %}</a></td>
                 <td><a class="btn btn-dark text-white" href="{% url 'discount_cards:edit_card' card.id %}">{% trans "discount_cards.edit_card" %}</a></td>
+                <td><button class="btn btn-danger text-white" data-id="{{ card.id }}">{% trans 'discount_cards.delete_card' %}</button></td>
               </tr>
               {% endfor %}
             </tbody>
@@ -47,7 +54,6 @@
           {% include "_pagination.html" %}
         {% endif %}
       </div>
-      <div class="col-md"></div>
     </div>
   </div>
 </main>

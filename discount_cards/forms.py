@@ -16,7 +16,6 @@ class ReadOnlyDiscountCardForm(ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        print(type(self.fields))
         for field in self.fields.values():
             field.widget.attrs["readonly"] = True
 

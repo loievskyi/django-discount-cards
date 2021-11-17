@@ -1,3 +1,4 @@
+from django.urls import reverse
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import UpdateView
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
@@ -49,5 +50,10 @@ class DiscountCardUpdateStatusView(UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        print(context["form"])
         return context
+
+    def get_success_url(self):
+        return reverse("discount_cards:edit_card", kwargs={"pk": self.object.pk})
+
+    def get_absolute_url(self):
+        return reverse("discount_cards:edit_card", kwargs={"pk": self.object.pk})
